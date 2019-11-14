@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
-	// this @Autowored annotation works in conjunction with the
+	// this @Autowired annotation works in conjunction with the
 	// @Component annotation (in the Person class) to allow
 	// allow us to take advantage of Spring's Dependency Injection
 	@Autowired
@@ -38,6 +38,8 @@ public class HomeController {
 		return mv;
 	}
 
+	// PostMappings and the method assignment in the form will allow us to 
+	// hide the input details from our url
 	@PostMapping("/add-person")
 	public ModelAndView formDeets(@RequestParam("first") String f, @RequestParam("last") String l,
 			@RequestParam("age") int age) {
@@ -45,7 +47,10 @@ public class HomeController {
 		return new ModelAndView("form-page", "p", pFromForm);
 	}
 	
-	@GetMapping("/add-person2")
+	// you can alternatively just add the variables with names and types
+	// if the parameter names match the name aattribute assigned in the
+	// input field on the form
+	@PostMapping("/add-person2")
 	public ModelAndView formDeets2(String first, String last,
 			int age) {
 		Person pFromForm = new Person(first, last, age);

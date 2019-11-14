@@ -34,21 +34,47 @@
 	</form>
 	<hr>
 	<h1>This example is using variables!</h1>
-		<form action="add-person2" >
-		First Name: <input type="text" name="first" >
-		Last Name: <input type="text" name="last">
+		<form action="add-person2" method="post" onsubmit="return validateInfo();" >
+		First Name: <input id="firstname" type="text" name="first" >
+		Last Name: <input id="lastname" type="text" name="last">
 		Age: <input type="number" name="age">
 		<input class="btn-primary" type="submit" value="Submit">
 	</form>
 	
 		<hr>
 	<h1>This example is using an object!</h1>
-		<form action="add-person3" >
+		<form action="add-person3"  >
 		First Name: <input type="text" name="firstName">
 		Last Name: <input type="text" name="lastName">
 		Age: <input type="number" name="age">
 		<input class="btn-primary" type="submit" value="Submit">
 	</form>
 	</div>
+	
+	<script>
+	
+	/* 
+	 * always test with a console.log() to make sure the js or js file is connected right!
+	 * 
+	 */ 
+	console.log("Hello world!");
+	// this isvalidating the second form above using ids to target the elements
+	function validateInfo() {
+		// 1. get the textbox value
+		var first = document.getElementById("firstname").value;
+		var last = document.getElementById("lastname").value;
+		
+		if (first.length <= 2) {
+			alert("Please enter a longer first name!");
+			document.getElementById("firstname").focus();
+			return false;
+		} else if (last.length <= 2) {
+			alert("Please enter a longer last name!");
+			document.getElementById("lastname").focus();
+			return false;
+		}
+	}
+	
+	</script>
 </body>
 </html>
